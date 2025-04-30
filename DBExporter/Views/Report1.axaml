@@ -1,0 +1,68 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:DBExporter.ViewModels"
+        xmlns:converters="using:DBExporter.Converters"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:CompileBindings="True"
+        x:Class="DBExporter.Views.Report1"
+        x:DataType="vm:Report1ViewModel">
+
+    <UserControl.Resources>
+        <converters:EnumToBooleanConverter x:Key="EnumToBooleanConverter"/>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Report 1" FontSize="20" Margin="10" />
+        </StackPanel>
+        <Separator Margin="0 1" />
+        <Grid ColumnDefinitions="300, *" RowDefinitions="*" Margin="10" ShowGridLines="True">
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="Select Sales Office / SM" />
+                <ComboBox
+                    ItemsSource="{Binding SalesUsers}"
+                    SelectedItem="{Binding SelectedSalesUser}"
+                    MaxDropDownHeight="100"
+                    Margin="0 10"
+                    Width="280"
+                    HorizontalAlignment="Left" />
+
+                <RadioButton GroupName="ReportType"
+                            IsChecked="{Binding SelectedReportType,
+                                        Converter={StaticResource EnumToBooleanConverter},
+                                        ConverterParameter={x:Static vm:ReportType.SalesOrgStructure}}">
+                    Sales Org Structure
+                </RadioButton>
+
+                <RadioButton GroupName="ReportType"
+                            IsChecked="{Binding SelectedReportType,
+                                        Converter={StaticResource EnumToBooleanConverter},
+                                        ConverterParameter={x:Static vm:ReportType.SalesOrgWithIBPLBilledCustomer}}">
+                    Sales Org with IBPL Billed Customer
+                </RadioButton>
+
+                <RadioButton GroupName="ReportType"
+                            IsChecked="{Binding SelectedReportType,
+                                        Converter={StaticResource EnumToBooleanConverter},
+                                        ConverterParameter={x:Static vm:ReportType.SalesOrgWithMEPCustomersBilled}}">
+                    Sales Org with MEP's Customers Billed
+                </RadioButton>
+
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+                    <Button Content="Export to CSV" Command="{Binding ExportToCsvCommand}" />
+                    <Button Content="Refresh" Command="{Binding RefreshCommand}" Margin="10 0" />
+                </StackPanel>
+            </StackPanel>
+            <DataGrid Grid.Column="1"
+                      ItemsSource="{Binding ReportItems}"
+                      AutoGenerateColumns="True"
+                      IsReadOnly="True"
+                      GridLinesVisibility="All"
+                      BorderThickness="1"
+                      Margin="10,0,0,0">
+            </DataGrid>
+        </Grid>
+    </StackPanel>
+</UserControl>

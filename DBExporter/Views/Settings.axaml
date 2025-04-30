@@ -1,0 +1,152 @@
+﻿<UserControl
+    x:Class="DBExporter.Views.Settings"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:DBExporter.ViewModels"
+    x:CompileBindings="True"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    x:DataType="vm:SettingsViewModel"
+    mc:Ignorable="d">
+    <StackPanel>
+        <TextBlock
+            Margin="10"
+            FontSize="20"
+            Text="SQL Server Settings" />
+        <Grid
+            Margin="10"
+            ColumnDefinitions="100, 300, *"
+            RowDefinitions="Auto, 10, Auto, 10, Auto, 10, Auto, 10, Auto, 10, Auto"
+            ShowGridLines="False">
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="Host" />
+            <TextBox
+                Grid.Row="0"
+                Grid.Column="1"
+                Classes.error="{Binding HasHostError}"
+                Text="{Binding Host}"
+                Watermark="Enter Host Address" />
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="2"
+                Padding="10,0"
+                VerticalAlignment="Center"
+                FontSize="12"
+                Foreground="Red"
+                IsVisible="{Binding HasHostError}"
+                Text="{Binding HostError}" />
+
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="Port" />
+            <TextBox
+                Grid.Row="2"
+                Grid.Column="1"
+                Classes.error="{Binding HasPortError}"
+                Text="{Binding Port}"
+                Watermark="Enter Port" />
+
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="2"
+                Padding="10,0"
+                VerticalAlignment="Center"
+                FontSize="12"
+                Foreground="Red"
+                IsVisible="{Binding HasPortError}"
+                Text="{Binding PortError}" />
+
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="Username" />
+            <TextBox
+                Grid.Row="4"
+                Grid.Column="1"
+                Classes.error="{Binding HasUsernameError}"
+                Text="{Binding Username}"
+                Watermark="Enter Username" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="2"
+                Padding="10,0"
+                VerticalAlignment="Center"
+                FontSize="12"
+                Foreground="Red"
+                IsVisible="{Binding HasUsernameError}"
+                Text="{Binding UsernameError}" />
+
+            <TextBlock
+                Grid.Row="6"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="Password" />
+            <TextBox
+                Grid.Row="6"
+                Grid.Column="1"
+                Classes.error="{Binding HasPasswordError}"
+                PasswordChar="*"
+                Text="{Binding Password}"
+                Watermark="Enter Password" />
+            <TextBlock
+                Grid.Row="6"
+                Grid.Column="2"
+                Padding="10,0"
+                VerticalAlignment="Center"
+                FontSize="12"
+                Foreground="Red"
+                IsVisible="{Binding HasPasswordError}"
+                Text="{Binding PasswordError}" />
+
+            <TextBlock
+                Grid.Row="8"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Text="Report 1 SP" />
+            <TextBox
+                Grid.Row="8"
+                Grid.Column="1"
+                Classes.error="{Binding HasReport1SpError}"
+                Text="{Binding Report1Sp}"
+                Watermark="Enter Stored Procedure Name" />
+            <TextBlock
+                Grid.Row="8"
+                Grid.Column="2"
+                Padding="10,0"
+                VerticalAlignment="Center"
+                FontSize="12"
+                Foreground="Red"
+                IsVisible="{Binding HasReport1SpError}"
+                Text="{Binding Report1SpError}" />
+
+            <StackPanel
+                Grid.Row="12"
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+                <Button Command="{Binding TestConnectionCommand}">Test Connection</Button>
+                <Button Margin="10,0" Command="{Binding SaveCommand}">Save</Button>
+            </StackPanel>
+        </Grid>
+        <TextBlock
+            Margin="10"
+            FontSize="20"
+            Text="{Binding TestMessage}" />
+    </StackPanel>
+
+    <UserControl.Styles>
+        <Style Selector="TextBox.error">
+            <Setter Property="BorderBrush" Value="Red" />
+        </Style>
+    </UserControl.Styles>
+</UserControl>

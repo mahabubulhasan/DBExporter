@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="DBExporter/App.axaml" value="DBExporter/DBExporter.csproj" />
+        <entry key="DBExporter/Views/MainWindow.axaml" value="DBExporter/DBExporter.csproj" />
+        <entry key="DBExporter/Views/Report1.axaml" value="DBExporter/DBExporter.csproj" />
+        <entry key="DBExporter/Views/Report2.axaml" value="DBExporter/DBExporter.csproj" />
+        <entry key="DBExporter/Views/Report3.axaml" value="DBExporter/DBExporter.csproj" />
+        <entry key="DBExporter/Views/Settings.axaml" value="DBExporter/DBExporter.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
