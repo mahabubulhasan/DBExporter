@@ -35,7 +35,7 @@
                     Margin="0 10"
                     SelectedDate="{Binding DateFrom}"
                     SelectedDateFormat="Custom"
-                    CustomDateFormatString="yyyy-MM-dd"
+                    CustomDateFormatString="MM/dd/yyyy"
                     Watermark="Select a date" />
 
                 <StackPanel Orientation="Horizontal" Margin="0 10">
@@ -43,6 +43,14 @@
                     <Button Margin="10 0" Command="{Binding LoadCommand}">Load</Button>
                 </StackPanel>
             </StackPanel>
+            <DataGrid Grid.Column="1"
+                      ItemsSource="{Binding ReportItems}"
+                      AutoGenerateColumns="True"
+                      IsReadOnly="True"
+                      GridLinesVisibility="All"
+                      BorderThickness="1"
+                      Margin="10,0,0,0">
+            </DataGrid>
         </Grid>
     </StackPanel>
 </UserControl>

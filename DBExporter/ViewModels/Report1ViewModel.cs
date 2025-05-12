@@ -94,8 +94,6 @@ public partial class Report1ViewModel : ObservableObject
         ReportItems = items;
     }
 
-    // Optional: Add a command to load users from database
-    [RelayCommand]
     private async Task LoadSalesUsers()
     {
         try
