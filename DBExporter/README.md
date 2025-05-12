@@ -1,7 +1,6 @@
 ## Build Instruction
 ```sh
-dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true /p:SelfContained=true
-dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true /p:SelfContained=true /p:IncludeAllContentForSelfExtract=true
+dotnet publish -r win-x64 -c Release /p:PublishSingleFile=true /p:SelfContained=true /p:IncludeAllContentForSelfExtract=true /p:DebugType=None
 ```
 
 The `dotnet publish` command allows several `/p:` (MSBuild properties) options to customize the build and deployment process. Here are some commonly used ones:
