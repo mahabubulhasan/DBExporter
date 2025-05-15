@@ -48,6 +48,7 @@ sealed class Program
                 services.AddTransient<Settings>();
                 services.AddTransient<Report1ViewModel>();
                 services.AddTransient<Report2ViewModel>();
+                services.AddTransient<Report3ViewModel>();
                 services.AddTransient<SettingsViewModel>();
 
                 // In Program.cs, add to ConfigureServices:

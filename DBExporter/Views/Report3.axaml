@@ -2,8 +2,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:vm="using:DBExporter.ViewModels"
+             mc:Ignorable="d"
+			 d:DesignWidth="800"
+			 d:DesignHeight="450"
              x:CompileBindings="True"
+			 x:DataType="vm:Report3ViewModel"
              x:Class="DBExporter.Views.Report3">
-    Report 3
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Report3" FontSize="20" Margin="10" />
+        </StackPanel>
+        <Separator Margin="0 1" />
+		<Grid ColumnDefinitions="300, *" RowDefinitions="*" Margin="10" ShowGridLines="True">
+			<StackPanel Grid.Row="0" Grid.Column="0">
+				<TextBlock Text="Entity" />
+				<ComboBox Width="250"
+						  ItemsSource="{Binding Entities}"
+						  SelectedItem="{Binding SelectedEntity}"
+						  MaxDropDownHeight="400"
+						  HorizontalAlignment="Left"
+						  Margin="0 10" />
+				<TextBlock Text="Distributor" />
+
+				<ComboBox Width="250"
+						  ItemsSource="{Binding Distributors}"
+						  SelectedItem="{Binding SelectedDistributor}"
+						  MaxDropDownHeight="400"
+						  HorizontalAlignment="Left"
+						  Margin="0 10" />
+
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+                    <TextBlock Text="Claim No" VerticalAlignment="Center" Width="80" />
+                    <TextBox Width="50"
+							 Text="{Binding ClaimNo}"
+							 HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+                    <TextBlock Text="Year" VerticalAlignment="Center" Width="80"/>
+                    <MaskedTextBox
+                    Width="50"
+                    Text="{Binding Year}"
+                    HorizontalAlignment="Left" Mask="0000"/>
+                </StackPanel>
+			</StackPanel>
+			<DataGrid Grid.Column="1"
+					  AutoGenerateColumns="True"
+					  IsReadOnly="True"
+					  GridLinesVisibility="All"
+					  BorderThickness="1"
+					  Margin="10 0 0 0" />
+
+		</Grid>
+    </StackPanel>
 </UserControl>
