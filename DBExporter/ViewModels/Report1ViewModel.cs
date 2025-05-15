@@ -40,6 +40,9 @@ public partial class Report1ViewModel : ObservableObject
     [ObservableProperty]
     private ObservableCollection<SalesReportItem> _reportItems = new();
 
+    [ObservableProperty]
+    private bool _isLoading;
+
     public Report1ViewModel(IDatabaseService databaseService)
     {
         _databaseService = databaseService;
@@ -50,6 +53,7 @@ public partial class Report1ViewModel : ObservableObject
     [RelayCommand]
     private async Task Refresh()
     {
+        IsLoading = false;
         if (SelectedSalesUser == null)
             return;
 
@@ -69,6 +73,7 @@ public partial class Report1ViewModel : ObservableObject
         if (config == null)
             return;
 
+        IsLoading = true;
         string query = $"EXEC {config.Report1Sp} '{SelectedSalesUser.Code}','{reportFlag}'";
         var data = await _databaseService.ExecuteQueryAsync(query);
 
@@ -92,6 +97,7 @@ public partial class Report1ViewModel : ObservableObject
         }
 
         ReportItems = items;
+        IsLoading = false;
     }
 
     private async Task LoadSalesUsers()
