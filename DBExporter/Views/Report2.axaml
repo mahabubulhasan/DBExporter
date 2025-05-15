@@ -21,13 +21,13 @@
                 <ComboBox Width="250" Margin="0 10"
                           ItemsSource="{Binding Entities}"
                           SelectedItem="{Binding SelectedEntity}"
-                          MaxDropDownHeight="100"
+                          MaxDropDownHeight="400"
                           HorizontalAlignment="Left"/>
                 <TextBlock Text="Distributor" />
                 <ComboBox Width="250" Margin="0 10"
                           ItemsSource="{Binding Distributors}"
                           SelectedItem="{Binding SelectedDistributor}"
-                          MaxDropDownHeight="100"
+                          MaxDropDownHeight="400"
                           HorizontalAlignment="Left"/>
                 <TextBlock Text="Date" />
                 <CalendarDatePicker
