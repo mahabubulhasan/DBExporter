@@ -24,10 +24,10 @@
                 <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
             </MenuItem>
             <MenuItem Header="Report">
-                <MenuItem Header="Report 1" Command="{Binding Report1Command}"/>
-                <MenuItem Header="Report 2" Command="{Binding Report2Command}"/>
-                <MenuItem Header="Report 3" Command="{Binding Report3Command}"/>
-                <MenuItem Header="Report 4" Command="{Binding Report4Command}"/>
+                <MenuItem Header="Customer Dump" Command="{Binding Report1Command}"/>
+                <MenuItem Header="Stock Monitoring Report" Command="{Binding Report2Command}"/>
+                <MenuItem Header="Claim Report" Command="{Binding Report3Command}"/>
+                <MenuItem Header="Sales Data Download" Command="{Binding Report4Command}"/>
             </MenuItem>
         </Menu>
 

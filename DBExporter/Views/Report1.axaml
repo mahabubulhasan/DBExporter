@@ -21,8 +21,9 @@
         <StackPanel Orientation="Horizontal">
             <TextBlock
                 Margin="10"
-                FontSize="20"
-                Text="Report 1" />
+                FontSize="20">
+                Customer Dump
+            </TextBlock>
         </StackPanel>
         <Separator Margin="0,1" />
         <Grid

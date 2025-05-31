@@ -18,7 +18,7 @@
         <Separator Margin="0 1" />
         <Grid ColumnDefinitions="300, *" RowDefinitions="*" Margin="10" ShowGridLines="True">
             <StackPanel Grid.Row="0" Grid.Column="0">
-                <TextBlock>Sites</TextBlock>
+                <TextBlock>Site</TextBlock>
                 <ComboBox Width="250"
                           ItemsSource="{Binding Sites}"
                           SelectedItem="{Binding SelectedSite}"
