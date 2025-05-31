@@ -104,4 +104,13 @@ public partial class MainWindowViewModel : ViewModelBase
             CurrentView = Program.ServiceProvider!.GetRequiredService<Report3>();
         });
     }
+    
+    [RelayCommand]
+    private void Report4()
+    {
+        Dispatcher.UIThread.Post(() =>
+        {
+            CurrentView = Program.ServiceProvider!.GetRequiredService<Report4>();
+        });
+    }
 }

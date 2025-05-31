@@ -27,6 +27,7 @@
                 <MenuItem Header="Report 1" Command="{Binding Report1Command}"/>
                 <MenuItem Header="Report 2" Command="{Binding Report2Command}"/>
                 <MenuItem Header="Report 3" Command="{Binding Report3Command}"/>
+                <MenuItem Header="Report 4" Command="{Binding Report4Command}"/>
             </MenuItem>
         </Menu>
 
