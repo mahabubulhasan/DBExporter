@@ -1,0 +1,91 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:DBExporter.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="850"
+             x:Class="DBExporter.Views.Report5"
+             x:DataType="vm:Report5ViewModel"
+             x:CompileBindings="True"
+             xmlns:converters="using:DBExporter.Converters">
+    <UserControl.Resources>
+        <converters:BooleanInverterConverter x:Key="BooleanInverterConverter" />
+    </UserControl.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock FontSize="20" Margin="10">User Data Dump</TextBlock>
+        </StackPanel>
+        <Separator Margin="0 1" />
+        <Grid ColumnDefinitions="300, *" RowDefinitions="*" Margin="10" ShowGridLines="True">
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <TextBlock Text="Entity" />
+                <ComboBox Width="250" Margin="0 10"
+                          MaxDropDownHeight="400"
+                          ItemsSource="{Binding Entities}"
+                            SelectedItem="{Binding SelectedEntity}"
+                          HorizontalAlignment="Left"/>
+                <TextBlock Text="Site" />
+                <ComboBox Width="250" Margin="0 10"
+                          MaxDropDownHeight="400"
+                            ItemsSource="{Binding Sites}"
+                            SelectedItem="{Binding SelectedSite}"
+                          HorizontalAlignment="Left"/>
+
+                <TextBlock Text="Customer Type" />
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Width="150" Margin="0 10"
+                              MaxDropDownHeight="400"
+                                ItemsSource="{Binding CustomerTypes}"
+                              SelectedItem="{Binding SelectedCustomerType}"
+                              HorizontalAlignment="Left"/>
+
+                    <ComboBox Width="95" Margin="5 10 0 10"
+                              MaxDropDownHeight="400"
+                              ItemsSource="{Binding CustomerClasses}"
+                                SelectedItem="{Binding SelectedCustomerClass}"
+                              HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <TextBlock Text="STL" />
+                <ComboBox Width="250" Margin="0 10"
+                          MaxDropDownHeight="400"
+                          ItemsSource="{Binding Stls}"
+                            SelectedItem="{Binding SelectedStl}"
+                          HorizontalAlignment="Left"/>
+                <TextBlock Text="SAP ID / GCC ID" />
+                <TextBox Width="250" Margin="0 10" HorizontalAlignment="Left" Text="{Binding SapId}" />
+
+                <TextBlock Text="Active" />
+                <ComboBox Width="250" Margin="0 10"
+                          MaxDropDownHeight="400"
+                            ItemsSource="{Binding CustomerStates}"
+                          SelectedItem="{Binding SelectedCustomerState}"
+                          HorizontalAlignment="Left"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+                    <Button Command="{Binding ExportCommand}">Export to CSV</Button>
+                    <Button Command="{Binding LoadCommand}" Margin="10 0" >Load</Button>
+                </StackPanel>
+            </StackPanel>
+            <Grid Grid.Column="1">
+                <DataGrid AutoGenerateColumns="True"
+                          IsReadOnly="True"
+                          GridLinesVisibility="All"
+                          ItemsSource="{Binding ReportItems}"
+                          IsVisible="{Binding IsLoading, Converter={StaticResource BooleanInverterConverter}}"
+                          Margin="10 0 0 0 " />
+
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsVisible="{Binding IsLoading}">
+                    <ProgressBar Width="200" Height="20"
+                                 IsIndeterminate="True" />
+                    <TextBlock Margin="0, 10, 0, 0"
+                               HorizontalAlignment="Center">
+                        Loading...
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </StackPanel>
+</UserControl>

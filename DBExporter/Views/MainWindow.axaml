@@ -28,6 +28,7 @@
                 <MenuItem Header="Stock Monitoring Report" Command="{Binding Report2Command}"/>
                 <MenuItem Header="Claim Report" Command="{Binding Report3Command}"/>
                 <MenuItem Header="Sales Data Download" Command="{Binding Report4Command}"/>
+                <MenuItem Header="User Data Dump" Command="{Binding Report5Command}"/>
             </MenuItem>
         </Menu>
 

@@ -46,11 +46,13 @@ sealed class Program
                 services.AddTransient<Report2>();
                 services.AddTransient<Report3>();
                 services.AddTransient<Report4>();
+                services.AddTransient<Report5>();
                 services.AddTransient<Settings>();
                 services.AddTransient<Report1ViewModel>();
                 services.AddTransient<Report2ViewModel>();
                 services.AddTransient<Report3ViewModel>();
                 services.AddTransient<Report4ViewModel>();
+                services.AddTransient<Report5ViewModel>();
                 services.AddTransient<SettingsViewModel>();
 
                 // In Program.cs, add to ConfigureServices:
