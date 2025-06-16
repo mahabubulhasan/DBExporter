@@ -29,7 +29,7 @@ partial class Report4ViewModel: ObservableObject
 
     [ObservableProperty]
     private string _fromDate = string.Empty;
-    
+
     public string FormattedFromDate => string.IsNullOrEmpty(FromDate) ? "From Date" : FromDate;
     public string FormattedToDate => string.IsNullOrEmpty(ToDate) ? "To Date" : ToDate;
 
@@ -56,12 +56,12 @@ partial class Report4ViewModel: ObservableObject
     private async Task LoadDistributors()
     {
         string condition = string.Empty;
-        
+
         if(SelectedSite?.Code is not null)
         {
             condition = $"AND GCC.site_id = '{SelectedSite.Code}'";
         }
-        const string sql = """
+        string sql = $"""
                SELECT DISTINCT IAS.customer_id Distributor_id,
                                IAS.dist_gcc_id,
                                IAS.distributor_name + ' (' + IAS.dist_gcc_id
@@ -238,7 +238,7 @@ partial class Report4ViewModel: ObservableObject
                     eClaim_Rate = row.Table.Columns.Contains("eClaim_Rate") && row["eClaim_Rate"] != DBNull.Value ? Convert.ToDecimal(row["eClaim_Rate"]) : 0
                 });
             }
-            
+
             ReportItems = items;
         }
         catch (Exception e)
