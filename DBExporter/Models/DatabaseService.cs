@@ -7,8 +7,6 @@ namespace DBExporter.Models;
 
 public class DatabaseService : IDatabaseService
 {
-    // private string _connectionString = "Server=118.179.215.5\\MSSQLSERVER,1433;Database=master;User Id=dev;Password=J@ntrik007#&;Connection Timeout=30;TrustServerCertificate=True;";
-
     public async Task<string> GetConnectionStringAsync()
     {
         var config = await DatabaseConfig.GetInstanceAsync();
